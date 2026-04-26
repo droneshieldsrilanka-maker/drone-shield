@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drone Forensics Toolkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- PARTICLES CANVAS -->
+<canvas id="particles"></canvas>
+
+<!-- SCROLL DOTS -->
+<div class="scroll-ind" id="scrollDots">
+  <div class="scroll-dot active" onclick="scrollToSection(0)" title="Home"></div>
+  <div class="scroll-dot" onclick="scrollToSection(1)" title="Domain"></div>
+  <div class="scroll-dot" onclick="scrollToSection(2)" title="Milestones"></div>
+  <div class="scroll-dot" onclick="scrollToSection(3)" title="Documents"></div>
+  <div class="scroll-dot" onclick="scrollToSection(4)" title="Slides"></div>
+  <div class="scroll-dot" onclick="scrollToSection(5)" title="About Us"></div>
+  <div class="scroll-dot" onclick="scrollToSection(6)" title="Contact"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="#hero">
+    <img src="assets/logo.png" alt="Drone Forensics Logo" class="logo-img">
+    <div class="logo-pulse"></div>
+  
+    <span class="logo-text">DRONE<span class="logo-slash"> </span>FORENSICS</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a></li>
+    <li><a href="#domain">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Domain
+    </a></li>
+    <li><a href="#milestones">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17l-5-5-4 4-3-3"/></svg>
+      Milestones
+    </a></li>
+    <li><a href="#documents">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Documents
+    </a></li>
+    <li><a href="#slides">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      presentations
+    </a></li>
+     <li><a href="#final-product">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="6" height="6" rx="1"/><line x1="9" y1="9" x2="4" y2="4"/><line x1="15" y1="9" x2="20" y2="4"/><line x1="9" y1="15" x2="4" y2="20"/><line x1="15" y1="15" x2="20" y2="20"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/></svg>
+      Final Product
+    </a></li>
+    <li><a href="#about">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      About Us
+    </a></li>
+    <li><a href="#contact">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Contact
+    </a></li>
+    
+  </ul>
+</nav>
+
+<!-- ══════════ HERO / HOME ══════════ -->
+<section class="hero" id="home" data-section="0">
+  <div class="hero-grid"></div>
+  <!-- Video Background -->
+  <div class="hero-video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="assets/video3.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <div class="hero-left">
+    <div class="hero-tag">
+      
+    </div>
+    <h1>
+      <span class="line1">ML-BASED</span>
+      <span class="line2">DRONE</span>
+      <span class="line3">FORENSICS TOOLKIT</span>
+    </h1>
+    <p class="hero-desc">A multi-module, forensically sound platform integrating machine learning for media analysis, GPS attack detection, flight log tampering identification, and firmware integrity verification.</p>
+    <div class="cta-row">
+      <a href="#domain" class="btn-primary">EXPLORE RESEARCH</a>
+      <a href="#milestones" class="btn-ghost">VIEW TIMELINE</a>
+    </div>
+    
+    <div class="stats-row">
+      <div class="stat-box"><span class="stat-val" data-count="4">0</span><span class="stat-lbl">Core Modules</span></div>
+      <div class="stat-box"><span class="stat-val" data-count="7">0</span><span class="stat-lbl">Datasets</span></div>
+      <div class="stat-box"><span class="stat-val" data-count="5">0</span><span class="stat-lbl">Research Qs</span></div>
+      <div class="stat-box"><span class="stat-val">ML</span><span class="stat-lbl">Powered</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="drone-frame">
+      <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=700&auto=format" alt="Professional drone">
+      <div class="scan-bar"></div>
+      <div class="drone-hud">
+        <div class="hud-corner hud-tl"></div>
+        <div class="hud-corner hud-tr"></div>
+        <div class="hud-corner hud-bl"></div>
+        <div class="hud-corner hud-br"></div>
+        <div class="hud-label">UAV FORENSICS</div>
+        <div class="hud-badge"><div class="hud-dot"></div><div class="hud-text">ACTIVE RESEARCH · 2025–2026</div></div>
+      </div>
+    </div>
+    <!-- Floating drone mini video -->
+    <div class="hero-mini-video">
+      <video autoplay muted loop playsinline>
+        <source src="assets/Video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DOMAIN ══════════ -->
+<section id="domain" class="section-dark" data-section="1">
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">
+      <span class="sec-num">01</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      DOMAIN
+    </div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="sec-inner">
+    <h2 class="reveal delay-1">Research Domain Overview</h2>
+    <p class="sec-desc reveal delay-2">Comprehensive analysis of the drone forensics landscape — from literature foundations to methodology.</p>
+
+    <!-- Domain Tabs -->
+    <div class="domain-tabs reveal delay-2">
+      <button class="dom-tab active" onclick="switchDomTab(0)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Literature Review
+      </button>
+      <button class="dom-tab" onclick="switchDomTab(1)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Research Gap
+      </button>
+      <button class="dom-tab" onclick="switchDomTab(2)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Research Problem
+      </button>
+      <button class="dom-tab" onclick="switchDomTab(3)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Objectives
+      </button>
+      <button class="dom-tab" onclick="switchDomTab(4)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="9" y2="15"/><line x1="12" y1="9" x2="12" y2="15"/><line x1="15" y1="9" x2="15" y2="12"/></svg>
+        Methodology
+      </button>
+      <button class="dom-tab" onclick="switchDomTab(5)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Technologies
+      </button>
+    </div>
+    
+
+    <!-- Domain Panels -->
+    <div class="dom-panel active" id="dp-0">
+      <div class="dom-panel-inner">
+        <div class="dom-text">
+          <h3> 01. Literature Review</h3>
+           <h2 class="reveal delay-1">Prior Work &amp; Foundations</h2>
+          <p>A comprehensive review of existing UAV forensic methodologies, machine learning applications in digital forensics, GPS spoofing detection systems, and firmware security analysis techniques.</p>
+          <div class="reveal delay-2 lit-wrap">
+    <div class="lit-nav">
+      <div class="lit-tab active" onclick="switchTab(0)"><span class="lit-tab-lbl">Area 01</span><div class="lit-tab-title">Drone Forensics</div></div>
+      <div class="lit-tab" onclick="switchTab(1)"><span class="lit-tab-lbl">Area 02</span><div class="lit-tab-title">GPS Attacks</div></div>
+      <div class="lit-tab" onclick="switchTab(2)"><span class="lit-tab-lbl">Area 03</span><div class="lit-tab-title">Flight Log Analysis</div></div>
+      <div class="lit-tab" onclick="switchTab(3)"><span class="lit-tab-lbl">Area 04</span><div class="lit-tab-title">Firmware Tampering</div></div>
+    </div>
+    <div>
+      <div class="lit-panel active" id="panel0">
+        <div class="lit-ph"><img src="assets/photo-1516116216624-53e697fedbea.jpg" alt="Digital forensics lab"><div class="lit-ph-overlay"><div class="lph-h">Drone Forensics &amp; Digital Evidence</div><div class="lph-q">Drones operate as cyber-physical systems integrating embedded hardware, wireless communication, onboard sensors, and control software — introducing unique forensic challenges conventional tools cannot address.</div></div></div>
+        <div class="lit-grid">
+          <div class="lit-entry"><span class="lit-et">Forensic Soundness</span><h4>UAV as Cyber-Physical Systems</h4><p>Drone forensics focuses on identification, acquisition, analysis, and presentation of UAV evidence. Unique challenges — proprietary formats, volatile telemetry, removable storage — are not addressed by conventional tools built for computers and mobile devices.</p></div>
+          <div class="lit-entry"><span class="lit-et">Media Recovery</span><h4>File Carving Limitations</h4><p>File system analysis and file carving are less effective on drone storage due to frequent overwriting, fragmentation, and proprietary structures. Literature highlights the need for drone-aware recovery mechanisms on FAT32/exFAT SD and microSD cards.</p></div>
+          <div class="lit-entry"><span class="lit-et">ML in Forensics</span><h4>CNN-Based Tampering Detection</h4><p>CNNs effectively detect manipulation — splicing, copy-move, object insertion. Research stresses ML outputs must serve as decision-support evidence, not definitive proof, especially in legal contexts. This research adopts that principle throughout.</p></div>
+          <div class="lit-entry"><span class="lit-et">Metadata Analysis</span><h4>Cross-Correlation for Integrity</h4><p>Metadata — timestamps, GPS coordinates, device identifiers — can be intentionally manipulated. Validation through cross-correlation with independent sources such as flight logs is essential for evidential reliability in drone investigations.</p></div>
+          <div class="lit-entry"><span class="lit-et">Chain of Custody</span><h4>Cryptographic Integrity</h4><p>NIST SP 800-86 and ISO/IEC 27037 establish that forensic soundness requires non-intrusive acquisition, SHA-256 hashing, repeatability, and documentation — all particularly challenging due to proprietary formats and volatile flight data.</p></div>
+          <div class="lit-entry" style="background:rgba(0,113,227,.06)"><span class="lit-et" style="color:var(--ylw)">Research Gap</span><h4 style="color:var(--t)">No Integrated UAV Framework</h4><p>Literature reveals a lack of integrated forensic frameworks combining recovery, metadata analysis, ML-based tampering detection, log correlation, and chain-of-custody management specifically for UAVs. This gap forms the foundation of the proposed research.</p></div>
+        </div>
+      </div>
+      <div class="lit-panel" id="panel1">
+        <div class="lit-ph"><img src="assets/photo-1451187580459-43490279c0fa.jpg" alt="Satellite GPS network"><div class="lit-ph-overlay"><div class="lph-h">GPS Spoofing &amp; Jamming in UAV Systems</div><div class="lph-q">GPS spoofing transmits counterfeit signals to mislead drone navigation. Jamming emits radio frequency interference to block legitimate GPS signals — both producing distinct forensic signatures in telemetry logs.</div></div></div>
+        <div class="lit-grid">
+          <div class="lit-entry"><span class="lit-et">Attack Taxonomy</span><h4>Spoofing vs. Jamming</h4><p>GPS spoofing transmits counterfeit GPS signals causing incorrect position, velocity, or time calculation. Jamming emits radio frequency interference causing partial or complete navigation loss. Both produce distinct forensic signatures detectable through telemetry analysis.</p></div>
+          <div class="lit-entry"><span class="lit-et">Attack Indicators</span><h4>Common Anomaly Patterns</h4><p>Common GPS attack indicators include sudden drops in signal strength, abrupt unrealistic coordinate changes, abnormal speed or altitude variations, and timestamp inconsistencies — all detectable via ML anomaly detection applied to telemetry data.</p></div>
+          <div class="lit-entry"><span class="lit-et">Detection Methods</span><h4>Current Approaches</h4><p>Existing approaches include statistical threshold-based deviation detection, signal behavior analysis examining continuity and timing stability, and ML-based anomaly detection. All current solutions target real-time navigation protection rather than post-incident forensic investigation.</p></div>
+        </div>
+        <div class="gap-box"><span class="gap-box-lbl">Identified Gap</span><p>Despite existing detection techniques, most solutions lack forensic-focused, ML-based GPS spoofing and jamming detection systems integrated with visualization and structured reporting. This limits reliable post-incident investigation and evidence presentation, directly justifying the proposed GPS detection module.</p></div>
+      </div>
+      <div class="lit-panel" id="panel2">
+        <div class="lit-ph"><img src="assets/photo-1473968512647-3e447244af8f.jpg" alt="Drone in flight telemetry"><div class="lit-ph-overlay"><div class="lph-h">Flight Log Recovery &amp; Tampering Detection</div><div class="lph-q">Flight logs may be deleted, corrupted, partially overwritten, or stored in proprietary formats — making direct analysis impossible without prior recovery, decoding, and integrity validation.</div></div></div>
+        <div class="lit-grid">
+          <div class="lit-entry"><span class="lit-et">Telemetry Validation</span><h4>Decoding Is Not Enough</h4><p>Decoded flight logs provide structured telemetry — timestamps, GPS coordinates, altitude, speed, heading. However, decoded data alone cannot be assumed authentic. Temporal consistency checks and cross-parameter correlation are required to detect manipulation.</p></div>
+          <div class="lit-entry"><span class="lit-et">ML Anomaly Detection</span><h4>Time-Series Pattern Recognition</h4><p>ML-based anomaly detection effectively identifies abnormal behavioral patterns within time-series data. UAV flight log models can learn normal flight dynamics and flag deviations such as unrealistic acceleration, spatial coordinate jumps, or irregular sampling intervals.</p></div>
+          <div class="lit-entry"><span class="lit-et">Visualization</span><h4>Tampering Path Spatial Analysis</h4><p>Visual mapping of detected tampering paths allows investigators to correlate anomalies with spatial and temporal flight behavior, improving situational understanding and evidentiary presentation. Such visualization significantly enhances expert testimony and post-incident reporting.</p></div>
+        </div>
+        <div class="gap-box"><span class="gap-box-lbl">Identified Gap</span><p>Existing research lacks a unified forensic framework integrating flight log recovery, decoding, ML-based tampering detection, and visualization of tampering paths within a single forensically sound workflow. Most tools address these aspects in isolation, limiting post-incident confidence and evidentiary strength.</p></div>
+      </div>
+      <div class="lit-panel" id="panel3">
+        <div class="lit-ph"><img src="assets/photo-1518770660439-4636190af475.jpg" alt="Circuit board firmware"><div class="lit-ph-overlay"><div class="lph-h">Firmware Integrity &amp; Tampering Detection</div><div class="lph-q">Firmware governs core drone functionalities — boot initialization, sensor calibration, communication control, geofencing. Malicious modification can enable persistent backdoors and disable safety mechanisms.</div></div></div>
+        <div class="lit-grid">
+          <div class="lit-entry"><span class="lit-et">Firmware Extraction</span><h4>Integrity Validation Techniques</h4><p>Extracted firmware images contain bootloaders, configuration tables, executable code, and embedded metadata. Successful extraction alone does not guarantee authenticity. SHA-256 hashing, version string analysis, entropy profiling, and section layout examination are established validation approaches.</p></div>
+          <div class="lit-entry"><span class="lit-et">ML Classification</span><h4>Distinguishing Authentic from Modified</h4><p>ML models using opcode frequency distributions, entropy patterns, section size ratios, boot sequence markers, and hash deviations can detect firmware modifications. Random Forests, SVMs, Isolation Forests, and Autoencoders have demonstrated success distinguishing benign from modified firmware.</p></div>
+          <div class="lit-entry"><span class="lit-et">Forensic Correlation</span><h4>Firmware as Foundation for Trust</h4><p>Firmware anomalies must be correlated with operational anomalies — abnormal boot behavior, disabled safety features, unexpected communication patterns, or inconsistent flight logs. Firmware analysis provides foundational trust assessments for all higher-level artifacts including GPS data and media.</p></div>
+        </div>
+        <div class="gap-box"><span class="gap-box-lbl">Identified Gap</span><p>Existing research lacks a unified forensic framework integrating firmware extraction, integrity validation, ML-based tampering detection, and forensic interpretation within a single, drone-specific workflow. Most solutions focus on runtime protection and do not meet post-incident forensic requirements for evidence preservation, explainability, and structured reporting.</p></div>
+      </div>
+    </div>
+  </div>
+        </div>
+        <div class="dom-img">
+          <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?w=500&auto=format" alt="Literature">
+          <div class="dom-img-overlay">LITERATURE · 69 PAPERS REVIEWED</div>
+        </div>
+      </div>
+    </div>
+
+<!--Reserch Gap-->
+    <div class="dom-panel" id="dp-1">
+      <h3>02. Research Gap</h3>
+  <h2 class="reveal delay-1">Where Existing Tools Fall Short</h2>
+  <p class="sec-desc reveal delay-2">Traditional digital forensic tools are built for computers and mobile devices. When applied to UAV incidents, four critical gaps emerge this research directly addresses.</p>
+
+  <div class="img-strip cols-3 reveal delay-2">
+    <div class="img-card">
+      <img src="assets/photo-1551808525-51a94da548ce.jpg" alt="Drone forensics">
+      <span class="ic-tag tc">FORENSICS</span>
+      <div class="img-card-label">Fragmented investigation tooling</div>
+    </div>
+    <div class="img-card">
+      <img src="assets/photo-1563986768494-4dee2763ff3f.jpg" alt="GPS attack">
+      <span class="ic-tag to">GPS ATTACK</span>
+      <div class="img-card-label">GPS spoofing &amp; jamming threats</div>
+    </div>
+    <div class="img-card">
+      <img src="assets/photo-1526374965328-7f61d4dc18c5.jpg" alt="Binary firmware">
+      <span class="ic-tag tg">FIRMWARE</span>
+      <div class="img-card-label">Unauthorized firmware modification</div>
+    </div>
+  </div>
+
+  <div class="gap-grid">
+    <div class="gap-cell reveal delay-1">
+      <div class="gap-cell-top">
+        <img src="assets/photo-1551808525-51a94da548ce.jpg" alt="" class="gap-thumb">
+        <div><span class="gap-id">[ GAP — 01 ]</span><h3>No Integrated Drone Forensic Framework</h3></div>
+      </div>
+      <p>Literature reveals a complete lack of integrated forensic frameworks combining recovery, metadata analysis, ML-based tampering detection, log correlation, and chain-of-custody management specifically for drones. Tools address these aspects in isolation, limiting post-incident confidence and evidentiary strength.</p>
+    </div>
+    <div class="gap-cell reveal delay-2">
+      <div class="gap-cell-top">
+        <img src="assets/photo-1563986768494-4dee2763ff3f.jpg" alt="" class="gap-thumb">
+        <div><span class="gap-id">[ GAP — 02 ]</span><h3>GPS Attack Detection Lacks Forensic Focus</h3></div>
+      </div>
+      <p>Despite existing GPS spoofing and jamming detection techniques, most solutions are engineered for real-time navigation protection. There is a significant absence of forensic-focused, ML-based systems integrated with structured visualization and post-incident reporting for legal admissibility.</p>
+    </div>
+    <div class="gap-cell reveal delay-3">
+      <div class="gap-cell-top">
+        <img src="assets/photo-1633356122544-f134324a6cee.jpg" alt="" class="gap-thumb">
+        <div><span class="gap-id">[ GAP — 03 ]</span><h3>Flight Log Forensics Remains Fragmented</h3></div>
+      </div>
+      <p>Existing research lacks a unified workflow integrating flight log recovery, decoding, ML-based tampering detection, and spatial visualization of tampering paths within a single forensically sound system. Most tools address these stages independently, leaving investigators unable to reliably reconstruct drone trajectories.</p>
+    </div>
+    <div class="gap-cell reveal delay-4">
+      <div class="gap-cell-top">
+        <img src="assets/photo-1526374965328-7f61d4dc18c5.jpg" alt="" class="gap-thumb">
+        <div><span class="gap-id">[ GAP — 04 ]</span><h3>Firmware Analysis Not Drone-Specific</h3></div>
+      </div>
+      <p>Existing firmware security solutions focus on runtime protection or generic embedded malware detection, not drone post-incident forensics. Malicious firmware modification can enable persistent backdoors, disable safety mechanisms, manipulate logs, or alter operational limits — making higher-level artifacts unreliable.</p>
+    </div>
+  </div>
+    </div>
+
+    <div class="dom-panel" id="dp-2">
+      <div class="prob-block">
+        <div class="prob-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>03. Research Problem Statement</h3>
+        <p>Current digital forensic tools lack the capability to perform comprehensive, legally admissible investigations on unmanned aerial vehicles (UAVs). The absence of a unified, ML-powered forensic toolkit that covers media integrity, GPS attack forensics, flight log tampering detection, and firmware analysis creates critical gaps in drone incident investigations — limiting the ability of law enforcement and security professionals to reconstruct events and present evidence in legal proceedings.</p>
+        <div class="rq-list">
+          <div class="rq">RQ1 · How can ML improve the detection of tampered UAV media files?</div>
+          <div class="rq">RQ2 · What forensic methods effectively identify GPS spoofing attacks post-incident?</div>
+          <div class="rq">RQ3 · How can flight log tampering be detected and visualized forensically?</div>
+          <div class="rq">RQ4 · What approach enables reliable drone firmware integrity verification?</div>
+          <div class="rq">RQ5 · How can all modules be integrated into a legally sound chain-of-custody system?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dom-panel" id="dp-3">
+     <h3>04. Research Objectives. </h3> 
+  <h2 class="reveal delay-1">What This Research Delivers</h2>
+  <div class="obj-main reveal delay-2">
+    <span class="obj-main-lbl">Main Objective</span>
+    <p>To design and implement a Multi-Module, ML-Based Drone Forensics Toolkit that includes automated detection of firmware tampering alongside media recovery, metadata analysis, GPS spoofing and jamming detection, and flight log forensics — producing forensically sound, legally admissible evidence and structured investigative reports.</p>
+  </div>
+  <div class="obj-grid">
+    <div class="obj-item reveal delay-1"><div class="obj-tick">✓</div><span>Develop a recovery engine for drone storage media (SD/microSD, FAT32, exFAT)</span></div>
+    <div class="obj-item reveal delay-2"><div class="obj-tick">✓</div><span>Extract and analyze metadata from drone images and videos (EXIF, GPS, timestamps)</span></div>
+    <div class="obj-item reveal delay-3"><div class="obj-tick">✓</div><span>Implement ML-based image tampering detection using CNN-based deep learning</span></div>
+    <div class="obj-item reveal delay-1"><div class="obj-tick">✓</div><span>Correlate flight logs with recovered media for timeline reconstruction</span></div>
+    <div class="obj-item reveal delay-2"><div class="obj-tick">✓</div><span>Maintain automated chain-of-custody records with cryptographic SHA-256 hashing</span></div>
+    <div class="obj-item reveal delay-3"><div class="obj-tick">✓</div><span>Process and normalize drone GPS signal and telemetry log data</span></div>
+    <div class="obj-item reveal delay-1"><div class="obj-tick">✓</div><span>Extract statistical and behavioral features related to GPS signal integrity</span></div>
+    <div class="obj-item reveal delay-2"><div class="obj-tick">✓</div><span>Design an ML-based engine to detect GPS spoofing and jamming attacks</span></div>
+    <div class="obj-item reveal delay-3"><div class="obj-tick">✓</div><span>Visualize detected GPS anomalies via map-based forensic interpretation</span></div>
+    <div class="obj-item reveal delay-1"><div class="obj-tick">✓</div><span>Generate structured forensic reports supporting legal investigation</span></div>
+    <div class="obj-item reveal delay-2"><div class="obj-tick">✓</div><span>Extract static binary features — entropy, section size distribution, opcode frequency</span></div>
+    <div class="obj-item reveal delay-3"><div class="obj-tick">✓</div><span>Train ML models to classify drone firmware as authentic or tampered</span></div>
+  </div>
+    </div>
+
+<!-- ══════════ METHODOLOGY ══════════ -->
+<div class="dom-panel" id="dp-4">
+  <h3>05. Research Methodology.</h3>
+  <h2 class="reveal delay-1">Experimental &amp; Design-Oriented Approach</h2>
+  <p class="sec-desc reveal delay-2">Each module is implemented, tested, and validated independently using controlled datasets and simulated drone incident scenarios, then unified into the complete toolkit.</p>
+
+  <div class="mod-showcase reveal delay-2">
+    <div class="mod-card mc1"><img src="assets/photo-1551808525-51a94da548ce.jpg" alt="Media forensics"><div class="mod-bar"></div><div class="mod-body"><span class="mod-num">MODULE 01</span><h4>Media Forensics</h4><p>Recovery, metadata extraction, CNN tampering detection, chain-of-custody</p></div></div>
+    <div class="mod-card mc2"><img src="assets/photo-1563986768494-4dee2763ff3f.jpg" alt="GPS detection"><div class="mod-bar"></div><div class="mod-body"><span class="mod-num">MODULE 02</span><h4>GPS Attack Detection</h4><p>Spoofing &amp; jamming via Isolation Forest, One-Class SVM, LSTM</p></div></div>
+    <div class="mod-card mc3"><img src="assets/photo-1473968512647-3e447244af8f.jpg" alt="Flight logs"><div class="mod-bar"></div><div class="mod-body"><span class="mod-num">MODULE 03</span><h4>Flight Log Forensics</h4><p>Log recovery, decode, LSTM anomaly detection, tampering path visualization</p></div></div>
+    <div class="mod-card mc4"><img src="assets/photo-1518770660439-4636190af475.jpg" alt="Firmware analysis"><div class="mod-bar"></div><div class="mod-body"><span class="mod-num">MODULE 04</span><h4>Firmware Analysis</h4><p>Extraction, SHA-256 integrity, Random Forest &amp; Autoencoder classification</p></div></div>
+  </div>
+
+  <div class="pipeline reveal">
+    <div class="pipe-step"><span class="pipe-n">STEP 01</span><h4>Acquisition</h4><p>Non-intrusive collection, read-only processing, cryptographic hashing</p></div>
+    <div class="pipe-step"><span class="pipe-n">STEP 02</span><h4>Preprocessing</h4><p>Format normalization, integrity verification, secure cataloging</p></div>
+    <div class="pipe-step"><span class="pipe-n">STEP 03</span><h4>ML Analysis</h4><p>Feature extraction and anomaly/classification model application</p></div>
+    <div class="pipe-step"><span class="pipe-n">STEP 04</span><h4>Visualization</h4><p>Map-based, timeline, and spatial forensic output rendering</p></div>
+    <div class="pipe-step"><span class="pipe-n">STEP 05</span><h4>Reporting</h4><p>Structured forensic report generation for legal admissibility</p></div>
+  </div>
+
+  <div class="diag-label reveal">System Architecture Diagram</div>
+  <div class="diag-wrap reveal">
+    <svg viewBox="0 0 1040 590" xmlns="http://www.w3.org/2000/svg" font-family="'Poppins',sans-serif">
+      <defs>
+        <marker id="a0" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#00d4ff" opacity=".7"/></marker>
+        <marker id="a1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#ff5722" opacity=".7"/></marker>
+        <marker id="a2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#7c4dff" opacity=".7"/></marker>
+        <marker id="a3" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#00e676" opacity=".7"/></marker>
+      </defs>
+      <!-- USER -->
+      <rect x="420" y="8" width="200" height="40" fill="#0c1520" stroke="#00d4ff" stroke-width="1" stroke-opacity=".5"/>
+      <text x="520" y="23" text-anchor="middle" font-size="7.5" fill="#1e3a50" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" letter-spacing="1.5">INVESTIGATOR</text>
+      <text x="520" y="39" text-anchor="middle" font-size="10" fill="#c8e8ff" font-weight="600">User Interface</text>
+      <line x1="520" y1="48" x2="520" y2="80" stroke="#00d4ff" stroke-width="1" stroke-opacity=".35" stroke-dasharray="4 3" marker-end="url(#a0)"/>
+      <!-- GATEWAY -->
+      <rect x="370" y="82" width="300" height="36" fill="#142030" stroke="#00d4ff" stroke-width="1.1"/>
+      <text x="520" y="97" text-anchor="middle" font-size="7.5" fill="#1e3a50" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" letter-spacing="1">API GATEWAY</text>
+      <text x="520" y="112" text-anchor="middle" font-size="10" fill="#c8e8ff" font-weight="600">Backend Orchestrator</text>
+      <!-- dispatch -->
+      <line x1="415" y1="118" x2="120" y2="184" stroke="#00d4ff" stroke-width="1" stroke-opacity=".3" marker-end="url(#a0)"/>
+      <line x1="468" y1="118" x2="368" y2="184" stroke="#ff5722" stroke-width="1" stroke-opacity=".3" marker-end="url(#a1)"/>
+      <line x1="572" y1="118" x2="672" y2="184" stroke="#7c4dff" stroke-width="1" stroke-opacity=".3" marker-end="url(#a2)"/>
+      <line x1="625" y1="118" x2="921" y2="184" stroke="#00e676" stroke-width="1" stroke-opacity=".3" marker-end="url(#a3)"/>
+      <!-- MOD 1 -->
+      <rect x="10" y="186" width="240" height="250" fill="#0a1520" stroke="#00d4ff" stroke-width="1.1"/>
+      <rect x="10" y="186" width="240" height="24" fill="rgba(0,212,255,.12)"/>
+      <text x="130" y="199" text-anchor="middle" font-size="7" fill="#00d4ff" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" letter-spacing="1.5">MODULE 01</text>
+      <text x="130" y="212" text-anchor="middle" font-size="10" fill="#c8e8ff" font-weight="700">Media Forensics</text>
+      <rect x="22" y="222" width="216" height="22" fill="#142030" stroke="#00d4ff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="130" y="232" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Connect to Drone Storage</text>
+      <text x="130" y="241" text-anchor="middle" font-size="7" fill="#c8e8ff">SD · microSD · FAT32 · exFAT</text>
+      <rect x="22" y="250" width="103" height="30" fill="#142030" stroke="#00d4ff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="73" y="262" text-anchor="middle" font-size="7" fill="#5a8aaa">Metadata Extract</text>
+      <text x="73" y="273" text-anchor="middle" font-size="7" fill="#c8e8ff">EXIF · GPS · Time</text>
+      <rect x="133" y="250" width="105" height="30" fill="#142030" stroke="#00d4ff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="185" y="262" text-anchor="middle" font-size="7" fill="#5a8aaa">Extract Media Files</text>
+      <text x="185" y="273" text-anchor="middle" font-size="7" fill="#c8e8ff">JPEG · PNG · MP4</text>
+      <rect x="22" y="286" width="216" height="24" fill="#142030" stroke="#00d4ff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="130" y="297" text-anchor="middle" font-size="7.5" fill="#5a8aaa">AI Tampering Detection</text>
+      <text x="130" y="307" text-anchor="middle" font-size="7" fill="#c8e8ff">CNN · Deep Forgery Analysis</text>
+      <rect x="22" y="316" width="103" height="28" fill="#142030" stroke="#00d4ff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="73" y="327" text-anchor="middle" font-size="7" fill="#5a8aaa">Forensic Report</text>
+      <text x="73" y="337" text-anchor="middle" font-size="7" fill="#c8e8ff">Media + Flags</text>
+      <rect x="133" y="316" width="105" height="28" fill="#142030" stroke="#00d4ff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="185" y="327" text-anchor="middle" font-size="7" fill="#5a8aaa">Recover Deleted</text>
+      <text x="185" y="337" text-anchor="middle" font-size="7" fill="#c8e8ff">File Carving</text>
+      <rect x="22" y="350" width="216" height="22" fill="#142030" stroke="#00d4ff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="130" y="361" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Chain of Custody</text>
+      <text x="130" y="370" text-anchor="middle" font-size="7" fill="#c8e8ff">SHA-256 · Audit Log</text>
+      <rect x="22" y="378" width="216" height="46" fill="#142030" stroke="#00d4ff" stroke-width=".8" stroke-opacity=".5"/>
+      <text x="130" y="393" text-anchor="middle" font-size="7.5" fill="#5a8aaa">OUTPUT</text>
+      <text x="130" y="408" text-anchor="middle" font-size="9" fill="#00d4ff" font-weight="700">Media Forensic Report</text>
+      <text x="130" y="419" text-anchor="middle" font-size="6.5" fill="#5a8aaa">PDF · Evidence package</text>
+      <!-- MOD 2 -->
+      <rect x="265" y="186" width="240" height="250" fill="#0a1520" stroke="#ff5722" stroke-width="1.1"/>
+      <rect x="265" y="186" width="240" height="24" fill="rgba(255,87,34,.1)"/>
+      <text x="385" y="199" text-anchor="middle" font-size="7" fill="#ff5722" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" letter-spacing="1.5">MODULE 02</text>
+      <text x="385" y="212" text-anchor="middle" font-size="10" fill="#c8e8ff" font-weight="700">GPS Attack Detection</text>
+      <rect x="277" y="222" width="216" height="22" fill="#142030" stroke="#ff5722" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="385" y="232" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Parse Drone GPS Logs</text>
+      <text x="385" y="241" text-anchor="middle" font-size="7" fill="#c8e8ff">CSV · DAT · TXT Formats</text>
+      <rect x="277" y="250" width="216" height="22" fill="#142030" stroke="#ff5722" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="385" y="261" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Extract Key Metrics</text>
+      <text x="385" y="270" text-anchor="middle" font-size="7" fill="#c8e8ff">GPS · Altitude · Speed · Signal</text>
+      <rect x="277" y="278" width="216" height="22" fill="#142030" stroke="#ff5722" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="385" y="289" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Anomaly Classification</text>
+      <text x="385" y="298" text-anchor="middle" font-size="7" fill="#c8e8ff">Isolation Forest · One-Class SVM · LSTM</text>
+      <rect x="277" y="306" width="103" height="32" fill="#142030" stroke="#ff5722" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="328" y="318" text-anchor="middle" font-size="7" fill="#5a8aaa">Spoofing Detection</text>
+      <text x="328" y="329" text-anchor="middle" font-size="6.5" fill="#c8e8ff">Fake signals · Coord</text>
+      <text x="328" y="338" text-anchor="middle" font-size="6.5" fill="#c8e8ff">anomalies</text>
+      <rect x="390" y="306" width="103" height="32" fill="#142030" stroke="#ff5722" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="441" y="318" text-anchor="middle" font-size="7" fill="#5a8aaa">Jamming Detection</text>
+      <text x="441" y="329" text-anchor="middle" font-size="6.5" fill="#c8e8ff">Signal loss · Time</text>
+      <text x="441" y="338" text-anchor="middle" font-size="6.5" fill="#c8e8ff">drift · Sensor mismatch</text>
+      <rect x="277" y="344" width="216" height="46" fill="#142030" stroke="#ff5722" stroke-width=".8" stroke-opacity=".5"/>
+      <text x="385" y="359" text-anchor="middle" font-size="7.5" fill="#5a8aaa">OUTPUT</text>
+      <text x="385" y="374" text-anchor="middle" font-size="9" fill="#ff5722" font-weight="700">GPS Incident Report</text>
+      <text x="385" y="385" text-anchor="middle" font-size="6.5" fill="#5a8aaa">Timeline · Evidence · Legal</text>
+      <!-- MOD 3 -->
+      <rect x="520" y="186" width="240" height="250" fill="#0a1520" stroke="#7c4dff" stroke-width="1.1"/>
+      <rect x="520" y="186" width="240" height="24" fill="rgba(124,77,255,.1)"/>
+      <text x="640" y="199" text-anchor="middle" font-size="7" fill="#7c4dff" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" letter-spacing="1.5">MODULE 03</text>
+      <text x="640" y="212" text-anchor="middle" font-size="10" fill="#c8e8ff" font-weight="700">Flight Log Forensics</text>
+      <rect x="532" y="222" width="216" height="22" fill="#142030" stroke="#7c4dff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="640" y="232" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Recover &amp; Decode Logs</text>
+      <text x="640" y="241" text-anchor="middle" font-size="7" fill="#c8e8ff">DAT · TXT · Binary Proprietary</text>
+      <rect x="532" y="250" width="216" height="22" fill="#142030" stroke="#7c4dff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="640" y="261" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Temporal Consistency Check</text>
+      <text x="640" y="270" text-anchor="middle" font-size="7" fill="#c8e8ff">Coordinate continuity · Cross-param</text>
+      <rect x="532" y="278" width="216" height="22" fill="#142030" stroke="#7c4dff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="640" y="289" text-anchor="middle" font-size="7.5" fill="#5a8aaa">ML Tampering Detection</text>
+      <text x="640" y="298" text-anchor="middle" font-size="7" fill="#c8e8ff">LSTM Autoencoder · Anomaly Scoring</text>
+      <rect x="532" y="306" width="103" height="32" fill="#142030" stroke="#7c4dff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="583" y="318" text-anchor="middle" font-size="7" fill="#5a8aaa">Flight Path Map</text>
+      <text x="583" y="329" text-anchor="middle" font-size="6.5" fill="#c8e8ff">2D/3D trajectory</text>
+      <text x="583" y="338" text-anchor="middle" font-size="6.5" fill="#c8e8ff">anomaly overlay</text>
+      <rect x="645" y="306" width="103" height="32" fill="#142030" stroke="#7c4dff" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="696" y="318" text-anchor="middle" font-size="7" fill="#5a8aaa">Tampering Paths</text>
+      <text x="696" y="329" text-anchor="middle" font-size="6.5" fill="#c8e8ff">Spatial + temporal</text>
+      <text x="696" y="338" text-anchor="middle" font-size="6.5" fill="#c8e8ff">anomaly markers</text>
+      <rect x="532" y="344" width="216" height="46" fill="#142030" stroke="#7c4dff" stroke-width=".8" stroke-opacity=".5"/>
+      <text x="640" y="359" text-anchor="middle" font-size="7.5" fill="#5a8aaa">OUTPUT</text>
+      <text x="640" y="374" text-anchor="middle" font-size="9" fill="#7c4dff" font-weight="700">Flight Log Evidence Report</text>
+      <text x="640" y="385" text-anchor="middle" font-size="6.5" fill="#5a8aaa">Legal-ready · Structured</text>
+      <!-- MOD 4 -->
+      <rect x="775" y="186" width="255" height="250" fill="#0a1520" stroke="#00e676" stroke-width="1.1"/>
+      <rect x="775" y="186" width="255" height="24" fill="rgba(0,230,118,.08)"/>
+      <text x="902" y="199" text-anchor="middle" font-size="7" fill="#00e676" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" letter-spacing="1.5">MODULE 04</text>
+      <text x="902" y="212" text-anchor="middle" font-size="10" fill="#c8e8ff" font-weight="700">Firmware Analysis</text>
+      <rect x="787" y="222" width="231" height="22" fill="#142030" stroke="#00e676" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="902" y="232" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Non-Intrusive Extract</text>
+      <text x="902" y="241" text-anchor="middle" font-size="7" fill="#c8e8ff">Internal storage · Update packages</text>
+      <rect x="787" y="250" width="231" height="22" fill="#142030" stroke="#00e676" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="902" y="261" text-anchor="middle" font-size="7.5" fill="#5a8aaa">Integrity Validation</text>
+      <text x="902" y="270" text-anchor="middle" font-size="7" fill="#c8e8ff">SHA-256 · Version · Entropy profiling</text>
+      <rect x="787" y="278" width="231" height="22" fill="#142030" stroke="#00e676" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="902" y="289" text-anchor="middle" font-size="7.5" fill="#5a8aaa">ML Tampering Classification</text>
+      <text x="902" y="298" text-anchor="middle" font-size="7" fill="#c8e8ff">Random Forest · Autoencoder · Isolation Forest</text>
+      <rect x="787" y="306" width="112" height="32" fill="#142030" stroke="#00e676" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="843" y="318" text-anchor="middle" font-size="7" fill="#5a8aaa">Feature Extract</text>
+      <text x="843" y="329" text-anchor="middle" font-size="6.5" fill="#c8e8ff">Opcode · Section size</text>
+      <text x="843" y="338" text-anchor="middle" font-size="6.5" fill="#c8e8ff">Entropy map</text>
+      <rect x="907" y="306" width="111" height="32" fill="#142030" stroke="#00e676" stroke-width=".4" stroke-opacity=".3"/>
+      <text x="962" y="318" text-anchor="middle" font-size="7" fill="#5a8aaa">Anomaly Deviation</text>
+      <text x="962" y="329" text-anchor="middle" font-size="6.5" fill="#c8e8ff">Injected payloads</text>
+      <text x="962" y="338" text-anchor="middle" font-size="6.5" fill="#c8e8ff">Boot manipulation</text>
+      <rect x="787" y="344" width="231" height="46" fill="#142030" stroke="#00e676" stroke-width=".8" stroke-opacity=".5"/>
+      <text x="902" y="359" text-anchor="middle" font-size="7.5" fill="#5a8aaa">OUTPUT</text>
+      <text x="902" y="374" text-anchor="middle" font-size="9" fill="#00e676" font-weight="700">Firmware Forensic Report</text>
+      <text x="902" y="385" text-anchor="middle" font-size="6.5" fill="#5a8aaa">Tamper confidence · Evidence chain</text>
+      <!-- Outputs → Unified -->
+      <line x1="130" y1="436" x2="430" y2="530" stroke="#00d4ff" stroke-width=".8" stroke-opacity=".22" stroke-dasharray="5 3" marker-end="url(#a0)"/>
+      <line x1="385" y1="436" x2="488" y2="530" stroke="#ff5722" stroke-width=".8" stroke-opacity=".22" stroke-dasharray="5 3" marker-end="url(#a1)"/>
+      <line x1="640" y1="436" x2="560" y2="530" stroke="#7c4dff" stroke-width=".8" stroke-opacity=".22" stroke-dasharray="5 3" marker-end="url(#a2)"/>
+      <line x1="902" y1="436" x2="625" y2="530" stroke="#00e676" stroke-width=".8" stroke-opacity=".22" stroke-dasharray="5 3" marker-end="url(#a3)"/>
+      <!-- Unified -->
+      <rect x="385" y="532" width="290" height="38" fill="#142030" stroke="#00d4ff" stroke-width="1"/>
+      <text x="530" y="548" text-anchor="middle" font-size="7" fill="#1e3a50" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" letter-spacing="1">UNIFIED OUTPUT</text>
+      <text x="530" y="563" text-anchor="middle" font-size="10" fill="#c8e8ff" font-weight="700">Investigator Dashboard</text>
+      <!-- Legend -->
+      <rect x="10" y="544" width="8" height="8" fill="#00d4ff" fill-opacity=".4"/>
+      <text x="22" y="552" font-size="7.5" fill="#5a8aaa" font-family="'Poppins',sans-serif">Media Module</text>
+      <rect x="110" y="544" width="8" height="8" fill="#ff5722" fill-opacity=".4"/>
+      <text x="122" y="552" font-size="7.5" fill="#5a8aaa" font-family="'Poppins',sans-serif">GPS Module</text>
+      <rect x="10" y="560" width="8" height="8" fill="#7c4dff" fill-opacity=".4"/>
+      <text x="22" y="568" font-size="7.5" fill="#5a8aaa" font-family="'Poppins',sans-serif">Log Module</text>
+      <rect x="110" y="560" width="8" height="8" fill="#00e676" fill-opacity=".4"/>
+      <text x="122" y="568" font-size="7.5" fill="#5a8aaa" font-family="'Poppins',sans-serif">Firmware Module</text>
+      <text x="1030" y="580" text-anchor="end" font-size="7" fill="#1e3a50" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">v1.0 · 25-26J-078</text>
+    </svg>
+  </div>
+    </div>
+<!--Technologies-->
+    <div class="dom-panel" id="dp-5">
+       <h3> 06. Technologies Used</h3>
+  <h2 class="reveal delay-1">Technology Stack</h2>
+  <p class="sec-desc reveal delay-2">A carefully selected stack spanning machine learning, forensic tooling, data processing, and visualization — chosen for forensic soundness, explainability, and legal defensibility.</p>
+
+  <div class="tech-imgs reveal delay-2">
+    <article class="tech-feature">
+      <div class="tech-feature-img"><img src="assets/photo-1555949963-aa79dcee981c.jpg" alt="Python code"></div>
+      <div class="tech-feature-body">
+        <div class="tech-feature-head">
+          <h3 class="tech-feature-title">Python</h3>
+          <span class="tech-feature-tag tft-py">CORE</span>
+        </div>
+        <p class="tech-feature-desc">Core language and runtime for data workflows and model integration.</p>
+      </div>
+    </article>
+    <article class="tech-feature">
+      <div class="tech-feature-img"><img src="assets/photo-1620712943543-bcc4688e7485.jpg" alt="Machine learning AI"></div>
+      <div class="tech-feature-body">
+        <div class="tech-feature-head">
+          <h3 class="tech-feature-title">Machine Learning</h3>
+          <span class="tech-feature-tag tft-ml">ML</span>
+        </div>
+        <p class="tech-feature-desc">TensorFlow, PyTorch, and Scikit-learn for training and inference.</p>
+      </div>
+    </article>
+    <article class="tech-feature">
+      <div class="tech-feature-img"><img src="assets/photo-1551288049-bebda4e38f71.jpg" alt="Data visualization"></div>
+      <div class="tech-feature-body">
+        <div class="tech-feature-head">
+          <h3 class="tech-feature-title">Data Visualization</h3>
+          <span class="tech-feature-tag tft-vz">VISUAL</span>
+        </div>
+        <p class="tech-feature-desc">Folium, Plotly, and Matplotlib for maps, charts, and reporting views.</p>
+      </div>
+    </article>
+    <article class="tech-feature">
+      <div class="tech-feature-img"><img src="assets/photo-1516116216624-53e697fedbea.jpg" alt="Digital forensics"></div>
+      <div class="tech-feature-body">
+        <div class="tech-feature-head">
+          <h3 class="tech-feature-title">Digital Forensics</h3>
+          <span class="tech-feature-tag tft-fr">FORENSICS</span>
+        </div>
+        <p class="tech-feature-desc">Autopsy, Foremost, and Binwalk for recovery and artifact inspection.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="tech-wrap reveal delay-2">
+    <div class="tech-row"><div class="tech-row-lbl">Core Language<br>&amp; Runtime</div><div class="pills"><div class="pill py"><div class="pill-d"></div>Python 3.x</div><div class="pill dv"><div class="pill-d"></div>Jupyter Notebook</div><div class="pill dv"><div class="pill-d"></div>Conda Environment</div></div></div>
+    <div class="tech-row"><div class="tech-row-lbl">Machine Learning<br>&amp; Deep Learning</div><div class="pills"><div class="pill ml"><div class="pill-d"></div>TensorFlow / Keras</div><div class="pill ml"><div class="pill-d"></div>PyTorch</div><div class="pill ml"><div class="pill-d"></div>Scikit-learn</div><div class="pill ml"><div class="pill-d"></div>LSTM Autoencoder</div><div class="pill ml"><div class="pill-d"></div>CNN</div><div class="pill ml"><div class="pill-d"></div>Random Forest</div><div class="pill ml"><div class="pill-d"></div>Isolation Forest</div><div class="pill ml"><div class="pill-d"></div>One-Class SVM</div><div class="pill ml"><div class="pill-d"></div>Autoencoder</div></div></div>
+    <div class="tech-row"><div class="tech-row-lbl">Data Processing<br>&amp; Analysis</div><div class="pills"><div class="pill py"><div class="pill-d"></div>NumPy</div><div class="pill py"><div class="pill-d"></div>Pandas</div><div class="pill py"><div class="pill-d"></div>SciPy</div><div class="pill py"><div class="pill-d"></div>OpenCV</div><div class="pill py"><div class="pill-d"></div>Pillow (PIL)</div><div class="pill py"><div class="pill-d"></div>ExifRead / piexif</div><div class="pill py"><div class="pill-d"></div>Binwalk</div><div class="pill py"><div class="pill-d"></div>Python-magic</div></div></div>
+    <div class="tech-row"><div class="tech-row-lbl">Digital Forensics<br>Tooling</div><div class="pills"><div class="pill sec"><div class="pill-d"></div>Autopsy / The Sleuth Kit</div><div class="pill sec"><div class="pill-d"></div>Foremost (File Carving)</div><div class="pill sec"><div class="pill-d"></div>dd / dcfldd (Disk Imaging)</div><div class="pill sec"><div class="pill-d"></div>hashlib (SHA-256)</div><div class="pill sec"><div class="pill-d"></div>DJI Flight Log Decoder</div><div class="pill sec"><div class="pill-d"></div>MAVLink / UAVcan Parser</div></div></div>
+    <div class="tech-row"><div class="tech-row-lbl">Visualization<br>&amp; Reporting</div><div class="pills"><div class="pill ui"><div class="pill-d"></div>Matplotlib</div><div class="pill ui"><div class="pill-d"></div>Seaborn</div><div class="pill ui"><div class="pill-d"></div>Folium (Map)</div><div class="pill ui"><div class="pill-d"></div>Plotly</div><div class="pill ui"><div class="pill-d"></div>FPDF / ReportLab</div><div class="pill ui"><div class="pill-d"></div>Dash / Flask (Web)</div></div></div>
+    <div class="tech-row"><div class="tech-row-lbl">Backend API<br>&amp; Infrastructure</div><div class="pills"><div class="pill dv"><div class="pill-d"></div>Flask REST API</div><div class="pill dv"><div class="pill-d"></div>FastAPI</div><div class="pill dv"><div class="pill-d"></div>Docker</div><div class="pill dv"><div class="pill-d"></div>Git / GitHub</div><div class="pill dv"><div class="pill-d"></div>VSCode / PyCharm</div></div></div>
+  </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MILESTONES ══════════ -->
+<section id="milestones" class="section-alt" data-section="2">
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">
+      <span class="sec-num">02</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17l-5-5-4 4-3-3"/></svg>
+      MILESTONES
+    </div>
+    <div class="divider-line"></div>
+  </div>
+  <div class="sec-inner">
+    
+    <h2 class="reveal delay-1">Project Timeline</h2>
+    <p class="sec-desc reveal delay-2">All assessment milestones, dates, and mark allocations.</p>
+
+    <div class="ms-timeline">
+      <div class="ms-track"></div>
+
+      <div class="ms-item reveal delay-1">
+        <div class="ms-dot"></div>
+        <div class="ms-card">
+          <div class="ms-badge ms-badge--done">COMPLETED</div>
+          <div class="ms-h">Project Proposal</div>
+          <div class="ms-note">Presentation + proposal report</div>
+          <div class="ms-row">
+            <span class="ms-pct">12% marks</span>
+            <span class="ms-date">8th–12th September 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ms-item reveal delay-2">
+        <div class="ms-dot"></div>
+        <div class="ms-card">
+          <div class="ms-badge ms-badge--done">COMPLETED</div>
+          <div class="ms-h">Progress Presentation I</div>
+          <div class="ms-note">Module development — 50% progress</div>
+          <div class="ms-row">
+            <span class="ms-pct">15% marks</span>
+            <span class="ms-date">5th–9th January 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ms-item reveal delay-3">
+        <div class="ms-dot ms-dot--active"></div>
+        <div class="ms-card ms-card--active">
+          <div class="ms-badge ms-badge--done">COMPLETED</div>
+          <div class="ms-h">Progress Presentation II</div>
+          <div class="ms-note">Module integration — 90% progress</div>
+          <div class="ms-row">
+            <span class="ms-pct">18% marks</span>
+            <span class="ms-date">February 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ms-item reveal delay-4">
+        <div class="ms-dot ms-dot--pending"></div>
+        <div class="ms-card ms-card--pending">
+          <div class="ms-badge ms-badge--done">COMPLETED</div>
+          <div class="ms-h">Research Paper</div>
+          <div class="ms-note">IEEE format publication submission</div>
+          <div class="ms-row">
+            <span class="ms-pct">10% marks</span>
+            <span class="ms-date">TBD · 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ms-item reveal delay-1">
+        <div class="ms-dot ms-dot--pending"></div>
+        <div class="ms-card ms-card--pending">
+          <div class="ms-badge ms-badge--done">COMPLETED</div>
+          <div class="ms-h">Final Report</div>
+          <div class="ms-note">Complete system demonstration</div>
+          <div class="ms-row">
+            <span class="ms-pct">30% marks</span>
+            <span class="ms-date">April–May 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ms-item reveal delay-2">
+        <div class="ms-dot ms-dot--pending"></div>
+        <div class="ms-card ms-card--pending">
+          <div class="ms-badge ms-badge--done">COMPLETED</div>
+          <div class="ms-h">Final Viva</div>
+          <div class="ms-note">Individual examination</div>
+          <div class="ms-row">
+            <span class="ms-pct">15% marks</span>
+            <span class="ms-date">April–May 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DOCUMENTS ══════════ -->
+<section id="documents" class="section-dark" data-section="3">
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">
+      <span class="sec-num">03</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      DOCUMENTS
+    </div>
+    <div class="divider-line"></div>
+  </div>
+  <div class="sec-inner">
+   
+    <h2 class="reveal delay-1">Project Documents</h2>
+    <p class="sec-desc reveal delay-2">All official project documents.</p>
+
+    <div class="doc-grid">
+      <div class="doc-card reveal delay-1">
+        
+        <div class="doc-body">
+          <img src="assets/TAF.avif" alt="Document Image" class="doc-img">
+          
+          <h4>Topic Assessment Form (TAF)</h4>
+          <p>Summarizing key technical details, evaluations, and findings related to the project or system within a defined scope.</p>
+          <a href="https://drive.google.com/drive/folders/1ofuQMIZcv32kIF8Jg05nJiBfAFmLAsbC?usp=sharing" class="doc-btn"  target="_blank" 
+   rel="noopener noreferrer" >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+      <div class="doc-card reveal delay-2">
+        
+        <div class="doc-body">
+          <img src="assets/Proposal.jpg" alt="Document Image" class="doc-img">
+          
+          <h4>Proposal report</h4>
+          <p>The document contains details like goals, objectives, important dates, milestones and requirements needed to start and complete the project.</p>
+          <a href="https://drive.google.com/drive/folders/1FWzzhvyu6TUeQfxY_UkXLiMNHuz19PTp?usp=sharing"class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+      <div class="doc-card reveal delay-3">
+        
+        <div class="doc-body">
+          <img src="assets/check.webp" alt="Document Image" class="doc-img">
+      
+          <h4>Check List Documents</h4>
+          <p>Supervisor and assessment checklist documents for each milestone.</p>
+          <a href="https://drive.google.com/drive/folders/1byGxPc-RskVrFVvE6b19tW7F7nCYOB6k?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+      <div class="doc-card reveal delay-3">
+        
+        <div class="doc-body">
+          <img src="assets/thesis.png" alt="Document Image" class="doc-img">
+          
+          <h4>Final Reports (Thesis)</h4>
+          <p>Complete research document — 4 individual + 1 main compiled thesis.</p>
+          <a href="https://drive.google.com/drive/folders/1T7pGmWyI4FMjbSRzbk6YZUk05P5WkvpW?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+      <div class="doc-card reveal delay-3">
+        
+        <div class="doc-body">
+          <img src="assets/RP.png" alt="Document Image" class="doc-img">
+          
+          <h4>Research Paper</h4>
+          <p>Literature, methods, analysis, and research argumentation</p>
+          <a href="https://drive.google.com/drive/folders/10b3Mvuk9LjdZ1h8EwdWKcLZAXalw9Rx2?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+      <div class="doc-card reveal delay-3">
+        
+        <div class="doc-body">
+          <img src="assets/Post.webp" alt="Document Image" class="doc-img">
+          
+          <h4>Poster</h4>
+          <p>Visual summary of objectives, concepts, and outcomes.</p>
+          <a href="https://drive.google.com/drive/folders/1dBV6qeU85U9iRnT6jGTZESNm6GVwNGJn?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+       <div class="doc-grid">
+      <div class="doc-card reveal delay-1">
+        
+        <div class="doc-body">
+          <img src="assets/log.jpg" alt="Document Image" class="doc-img">
+          
+          <h4>Research Logbook</h4>
+          <p>Progress updates compared against the planned checklist.</p>
+          <a href="https://drive.google.com/drive/folders/1NiWOF2Lt9qcfCvl8Eu10RfFJqjAyKcpg?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDES ══════════ -->
+<section id="slides" class="section-alt" data-section="4">
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">
+      <span class="sec-num">04</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      SLIDES
+    </div>
+    <div class="divider-line"></div>
+  </div>
+  <div class="sec-inner">
+    
+    <h2 class="reveal delay-1">Presentation Slides</h2>
+    <p class="sec-desc reveal delay-2">Slide decks used in past presentations and placeholders for upcoming ones.</p>
+
+    <div class="slides-grid">
+      <div class="slide-card reveal delay-1">
+        <div class="slide-thumb">
+          <img src="assets/Prop.png" alt="Proposal slides">
+          <div class="slide-overlay">
+            <a href="https://drive.google.com/drive/folders/1o6t9_ECKBWUN_W1_eZv68K5llkRQ0Zgu?usp=sharing" class="slide-view-btn" target="_blank"  rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              View Slides
+            </a>
+          </div>
+        </div>
+        <div class="slide-body">
+          <div class="slide-tag">September 2025</div>
+          <h4>Proposal Presentation</h4>
+          <p>Initial project proposal covering problem statement, literature review, objectives, and planned methodology.</p>
+          <a href="https://drive.google.com/drive/folders/1o6t9_ECKBWUN_W1_eZv68K5llkRQ0Zgu?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PPTX
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+      <div class="slide-card reveal delay-2">
+        <div class="slide-thumb">
+          <img src="assets/PP1.png" alt="Progress PP1" target="_blank"  rel="noopener noreferrer">
+          <div class="slide-overlay">
+            <a href="https://drive.google.com/drive/folders/13ACRUyg5yQro9G_29rB8Bzu1w7CADDxo?usp=sharing" class="slide-view-btn" target="_blank"  rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              View Slides
+            </a>
+          </div>
+        </div>
+        <div class="slide-body">
+          <div class="slide-tag">January 2026</div>
+          <h4>Progress Presentation I</h4>
+          <p>50% milestone presentation showing completed module development, initial results, and next phase planning.</p>
+          <a href="https://drive.google.com/drive/folders/13ACRUyg5yQro9G_29rB8Bzu1w7CADDxo?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PPTX
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+      <div class="slide-card reveal delay-2">
+        <div class="slide-thumb">
+          <img src="assets/PP2.jpg" alt="Progress PP2" target="_blank"  rel="noopener noreferrer">
+          <div class="slide-overlay">
+            <a href="https://drive.google.com/drive/folders/1lJsl-pYN382KXNu3WY0AKRO39EhiozDG?usp=sharing" class="slide-view-btn" target="_blank"  rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              View Slides
+            </a>
+          </div>
+        </div>
+       
+      <div class="slide-body">
+          <div class="slide-tag">February 2026</div>
+          <h4>Progress Presentation II</h4>
+          <p>90% milestone — complete system integration and evaluation results.</p>
+          <a href="https://drive.google.com/drive/folders/1lJsl-pYN382KXNu3WY0AKRO39EhiozDG?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PPTX
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+      <div class="slide-card reveal delay-2">
+        <div class="slide-thumb">
+          <img src="assets/Final.png" alt="Progress PP2" target="_blank"  rel="noopener noreferrer">
+          <div class="slide-overlay">
+            <a href="https://drive.google.com/drive/folders/1utgwaXQeFFHt1eza3d6o2Lb37SnjrWE7?usp=sharing" class="slide-view-btn" target="_blank"  rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              View Slides
+            </a>
+          </div>
+        </div>
+        
+        <div class="slide-body">
+          <div class="slide-tag">April–May 2026</div>
+          <h4>Final Presentation</h4>
+          <p>Complete system demonstration with full evaluation and results.</p>
+          <a href="https://drive.google.com/drive/folders/1utgwaXQeFFHt1eza3d6o2Lb37SnjrWE7?usp=sharing" class="doc-btn" target="_blank"  rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PPTX
+          </a>
+        </div>
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+
+        <div class="doc-status doc-status--available">Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FINAL PRODUCT ══════════ -->
+<section id="final-product" class="section-dark" data-section="4">
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">
+      <span class="sec-num">04</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="9" y="9" width="6" height="6" rx="1"/>
+        <line x1="9" y1="9" x2="4" y2="4"/>
+        <line x1="15" y1="9" x2="20" y2="4"/>
+        <line x1="9" y1="15" x2="4" y2="20"/>
+        <line x1="15" y1="15" x2="20" y2="20"/>
+        <circle cx="4" cy="4" r="1.5"/>
+        <circle cx="20" cy="4" r="1.5"/>
+        <circle cx="4" cy="20" r="1.5"/>
+        <circle cx="20" cy="20" r="1.5"/>
+      </svg>
+      FINAL PRODUCT
+    </div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="sec-inner">
+
+    <h2 class="reveal delay-1">Final Product</h2>
+    <p class="sec-desc reveal delay-2">
+      Complete implementation of the project with working system and outcomes.
+    </p>
+
+    <div class="doc-grid">
+
+      <div class="doc-card reveal delay-1">
+        <div class="doc-body">
+          <video class="doc-img" controls>
+            <source src="assets/DroneV.mp4" type="video/mp4">
+               
+          </video>
+
+          <h4>System Implementation</h4>
+          <p>Fully developed system showcasing all core features and functionalities.</p>
+
+          <a href="https://drive.google.com/drive/folders/1szFt_XMG6ftlShZgUNzX6gXpRHr7QQN0?usp=sharing"
+             class="doc-btn"
+             target="_blank"
+             rel="noopener noreferrer">
+
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+
+            View / Download
+          </a>
+        </div>
+
+        <div class="doc-status doc-status--available">Completed</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT US ══════════ -->
+<section id="about" class="section-dark" data-section="5">
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">
+      <span class="sec-num">05</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      ABOUT US
+    </div>
+    <div class="divider-line"></div>
+  </div>
+  <div class="sec-inner">
+    
+    <h2 class="reveal delay-1">The Research Team</h2>
+    <p class="sec-desc reveal delay-2">BSc (Hons) IT — Cybersecurity Specialization · SLIIT · 2025–2026</p>
+
+    <!-- ── Supervisors Row ── -->
+    <div class="team-section-label reveal">— Supervisors —</div>
+    <div class="team-grid team-grid--supervisors">
+
+      <div class="tm-card reveal delay-1">
+        <div class="tm-photo-wrap">
+          <img src="Team/Mr. Deemantha Siriwardana (Supervisor).jfif" alt="Mr. Deemantha Siriwardana" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tm-photo-fallback">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tm-scan"></div>
+        </div>
+        <div class="tm-body">
+          <span class="tm-badge tm-badge--supervisor">Supervisor</span>
+          <h4>Mr. Deemantha Siriwardana</h4>
+          <div class="tm-affil-label">Affiliation</div>
+          <div class="tm-affil">Sri Lanka Institute of Information Technology (SLIIT)</div>
+          <div class="tm-affil-label">Department</div>
+          <div class="tm-affil">Department of Computer Systems Engineering </div>
+          <a href="mailto:deemantha.s@sliit.lk" class="tm-email">deemantha.s@sliit.lk</a>
+        </div>
+      </div>
+
+      <div class="tm-card reveal delay-2">
+        <div class="tm-photo-wrap">
+          <img src="Team/Ms. Ayesha Wijesooriya (Co-Supervisor).jpg" alt="Ms. Ayesha Wijesooriya" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tm-photo-fallback">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tm-scan"></div>
+        </div>
+        <div class="tm-body">
+          <span class="tm-badge tm-badge--cosupervisor">Co-Supervisor</span>
+          <h4>Ms. Ayesha Wijesooriya</h4>
+          <div class="tm-affil-label">Affiliation</div>
+          <div class="tm-affil">Sri Lanka Institute of Information Technology (SLIIT)</div>
+          <div class="tm-affil-label">Department</div>
+          <div class="tm-affil">Department of Computer Systems Engineering </div>
+          <a href="mailto:ayesha.w@sliit.lk" class="tm-email">ayesha.w@sliit.lk</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Group Members Row ── -->
+    <div class="team-section-label reveal">— Team Members —</div>
+    <div class="team-grid team-grid--members">
+
+      <div class="tm-card reveal delay-1">
+        <div class="tm-photo-wrap">
+          <img src="Team/Devinda.jpg" alt="Group Leader" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tm-photo-fallback">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tm-scan"></div>
+        </div>
+        <div class="tm-body">
+          
+          <h4>Wickramasinghe V D A</h4>
+          <div class="tm-affil-label">Researcher</div>
+          <div class="tm-affil">Sri Lanka Institute of Information Technology (SLIIT)</div>
+          <div class="tm-affil-label">Department</div>
+          <div class="tm-affil">Department of Computer Systems Engineering </div>
+          <a href="mailto:your@sliit.lk" class="tm-email">devindawickramasinghe8@gmail.com
+</a>
+        </div>
+      </div>
+
+      <div class="tm-card reveal delay-2">
+        <div class="tm-photo-wrap">
+          <img src="Team/S. U. E. Harshani.jfif" alt="Member 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tm-photo-fallback">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tm-scan"></div>
+        </div>
+        <div class="tm-body">
+          
+          <h4>S. U. E. Harshani</h4>
+          <div class="tm-affil-label">Researcher</div>
+          <div class="tm-affil">Sri Lanka Institute of Information Technology (SLIIT)</div>
+          <div class="tm-affil-label">Department</div>
+          <div class="tm-affil">Department of Computer Systems Engineering </div>
+          <a href="mailto:member2@sliit.lk" class="tm-email">udarieranga2020@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="tm-card reveal delay-3">
+        <div class="tm-photo-wrap">
+          <img src="Team/Muthukuda M A D H N.jfif" alt="Member 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tm-photo-fallback">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tm-scan"></div>
+        </div>
+        <div class="tm-body">
+         
+          <h4>Muthukuda M A D H N</h4>
+          <div class="tm-affil-label">Researcher</div>
+          <div class="tm-affil">Sri Lanka Institute of Information Technology (SLIIT)</div>
+          <div class="tm-affil-label">Department</div>
+          <div class="tm-affil">Department of Computer Systems Engineering </div>
+          <a href="mailto:member3@sliit.lk" class="tm-email"> hirusha285@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="tm-card reveal delay-4">
+        <div class="tm-photo-wrap">
+          <img src="Team/Siriwardhane H H D V.jpeg" alt="Member 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tm-photo-fallback">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="tm-scan"></div>
+        </div>
+        <div class="tm-body">
+          
+          <h4>Siriwardhane H H D V</h4>
+          <div class="tm-affil-label">Researcher</div>
+          <div class="tm-affil">Sri Lanka Institute of Information Technology (SLIIT)</div>
+          <div class="tm-affil-label">Department</div>
+          <div class="tm-affil">Department of Computer Systems Engineering </div>
+          <a href="mailto:member4@sliit.lk" class="tm-email">dulshisiriwardhane@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact" class="section-contact" data-section="6">
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">
+      <span class="sec-num">06</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      CONTACT
+    </div>
+    <div class="divider-line"></div>
+  </div>
+  <div class="sec-inner">
+    
+    <h2 class="reveal delay-1">Get In Touch</h2>
+    <p class="sec-desc reveal delay-2">Research inquiries, collaboration requests, or questions about this project.</p>
+
+    
+<!-- Contact Info Cards -->
+    <div class="contact-layout">
+      <div class="contact-info reveal delay-1">
+
+<iframe
+  class="map-frame"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7985553466043!2d79.97259731477337!3d6.914700794999963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae256db1a6771c5%3A0x2c63e344ab9a7536!2sSri%20Lanka%20Institute%20of%20Information%20Technology!5e0!3m2!1sen!2slk!4v1681000000000!5m2!1sen!2slk"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+         <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-card-label">Location</div>
+            <a 
+      class="contact-card-val" 
+      href="https://www.google.com/maps/place/Sri+Lanka+Institute+of+Information+Technology/@6.913717,79.977004,15z/data=!4m6!3m5!1s0x3ae256db1a6771c5:0x2c63e344ab9a7536!8m2!3d6.9146775!4d79.9729445!16zL20vMDRtMmcz?hl=en&entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" 
+      target="_blank">
+      SLIIT, New Kandy Rd, Malabe
+    </a>
+            
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-card-label">General Inquiry</div>
+            <a href="mailto:droneforensics@sliit.lk" class="contact-card-val">droneshieldsrilanka@gmail.com</a>
+          </div>
+        </div>
+
+  
+
+        <div class="contact-card">
+          <div class="contact-card-icon">
+           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.96 0 1.96.17 1.96.17v2.2h-1.1c-1.1 0-1.44.68-1.44 1.38V12h2.45l-.39 2.9h-2.06v7A10 10 0 0 0 22 12z"/>
+  </svg>
+          </div>
+          <div>
+            <div class="contact-card-label">Facebook</div>
+            <a href="https://www.facebook.com/share/16gct9KSUT/" class="contact-card-val" target="_blank"  rel="noopener noreferrer">Facebook</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5C18.55 4 20 5.45 20 7.75v8.5C20 18.55 18.55 20 16.25 20h-8.5C5.45 20 4 18.55 4 16.25v-8.5C4 5.45 5.45 4 7.75 4zm8.75 1.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+  </svg>
+</div>
+          <div>
+            <div class="contact-card-label">Instagram</div>
+            <a href="https://www.instagram.com/dronesheild?igsh=MTU0M24wbW92M3ZsNQ==" class="contact-card-val" target="_blank"  rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+
+        <!-- Drone mini video in contact -->
+        <div class="contact-video-box">
+          <video autoplay muted loop playsinline>
+            <source src="assets/Video.mp4" type="video/mp4">
+          </video>
+          <div class="contact-video-label">
+            <div class="cvl-dot"></div>
+            <span>Drone Forensic</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form reveal delay-2">
+        <div class="form-header">
+          <h3>Send a Message</h3>
+          <p>We'll respond within 48 hours.</p>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Full Name
+            </label>
+            <input type="text" id="cf-name" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label for="cf-email">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email Address
+            </label>
+            <input type="email" id="cf-email" placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-subject">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            Subject
+          </label>
+          <input type="text" id="cf-subject" placeholder="Research inquiry, collaboration, media request...">
+        </div>
+
+        <div class="form-group">
+          <label for="cf-type">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Inquiry Type
+          </label>
+          <select id="cf-type">
+            <option value="">Select inquiry type...</option>
+            <option>Research Collaboration</option>
+            <option>Academic Inquiry</option>
+            <option>Technical Question</option>
+            <option>Media / Press</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-msg">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Message
+          </label>
+          <textarea id="cf-msg" placeholder="Describe your inquiry in detail..."></textarea>
+        </div>
+
+        <button class="btn-send" onclick="handleSend()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-left">
+    <div class="foot-logo">DRONE<span class="logo-slash"> </span>FORENSICS</div>
+    <div class="foot-sub">A Multi-Model ML-Based Drone Forensics Toolkit </div>
+
+  </div>
+</footer>
+
+<script>
+/* ─── CURSOR ─── */
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px';
+  ring.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.dom-tab,.gap-cell,.rq,.obj-item,.ms-card,.team-card,.doc-card,.slide-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cur.style.transform = 'translate(-50%,-50%) scale(2.5)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1.5)';
+    ring.style.borderColor = 'rgba(0,212,255,.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cur.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.borderColor = 'rgba(0,212,255,.4)';
+  });
+});
+
+/* ─── PARTICLES ─── */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 1.5 + 0.3;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = -Math.random() * 0.4 - 0.1;
+    this.opacity = Math.random() * 0.4 + 0.05;
+    this.life = 1;
+    this.decay = Math.random() * 0.003 + 0.001;
+  }
+  update() {
+    this.x += this.speedX; this.y += this.speedY; this.life -= this.decay;
+    if (this.life <= 0 || this.y < -5) this.reset();
+  }
+  draw() {
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,212,255,${this.opacity * this.life})`; ctx.fill();
+  }
+}
+for (let i = 0; i < 120; i++) particles.push(new Particle());
+let connTimer = 0;
+function animParticles() {
+  if (getComputedStyle(canvas).display === 'none') return;
+  ctx.clearRect(0, 0, W, H); connTimer++;
+  particles.forEach(p => { p.update(); p.draw(); });
+  if (connTimer % 2 === 0) {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 100) {
+          ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0,212,255,${0.06*(1-d/100)})`; ctx.lineWidth = 0.5; ctx.stroke();
+        }
+      }
+    }
+  }
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+
+/* ─── SCROLL EFFECTS ─── */
+const nav = document.getElementById('nav');
+const progressBar = document.getElementById('progressBar');
+const dots = document.querySelectorAll('.scroll-dot');
+const sections = document.querySelectorAll('[data-section]');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY, totalH = document.body.scrollHeight - innerHeight;
+  progressBar.style.width = (scrollY / totalH * 100) + '%';
+  nav.classList.toggle('scrolled', scrollY > 60);
+  let current = 0;
+  sections.forEach(s => { if (scrollY >= s.offsetTop - 200) current = parseInt(s.dataset.section); });
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight * 0.88) el.classList.add('visible');
+  });
+});
+
+function scrollToSection(i) {
+  const ids = ['home','domain','milestones','documents','slides','about','contact'];
+  const el = document.getElementById(ids[i]);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ─── DOMAIN TABS ─── */
+function switchDomTab(i) {
+  document.querySelectorAll('.dom-tab').forEach((t,j) => t.classList.toggle('active', j===i));
+  document.querySelectorAll('.dom-panel').forEach((p,j) => p.classList.toggle('active', j===i));
+}
+
+/* ─── COUNTER ─── */
+function animCount(el, target, duration=1800) {
+  let start = null;
+  const step = ts => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / duration, 1);
+    el.textContent = Math.floor(p * target);
+    if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+const counters = document.querySelectorAll('[data-count]');
+new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animCount(e.target, parseInt(e.target.dataset.count)); } });
+}, { threshold: 0.5 }).observe ? null : null;
+counters.forEach(c => {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animCount(e.target, parseInt(e.target.dataset.count)); } });
+  }, { threshold: 0.5 }).observe(c);
+});
+
+/* ─── CONTACT SEND ─── */
+function handleSend() {
+  const btn = document.querySelector('.btn-send');
+  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sent!`;
+  btn.style.background = 'var(--grn)';
+  btn.style.color = '#000';
+  setTimeout(() => {
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
+    btn.style.background = ''; btn.style.color = '';
+  }, 3000);
+}
+
+/* ─── INITIAL REVEAL ─── */
+setTimeout(() => {
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight * 0.95) el.classList.add('visible');
+  });
+}, 100);
+</script>
+<script>
+function switchTab(index) {
+  const tabs = document.querySelectorAll('.lit-tab');
+  const panels = document.querySelectorAll('.lit-panel');
+
+  // Remove active from all tabs & panels
+  tabs.forEach(tab => tab.classList.remove('active'));
+  panels.forEach(panel => panel.classList.remove('active'));
+
+  // Activate selected tab & panel
+  tabs[index].classList.add('active');
+  panels[index].classList.add('active');
+}
+</script>
+</body>
+</html>
